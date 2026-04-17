@@ -12,6 +12,6 @@ function fun() {
 let but=document.getElementById("but")
 but.addEventListener("click", "add")
 
-function add{
+function add(){
     alert(hi)
 }
