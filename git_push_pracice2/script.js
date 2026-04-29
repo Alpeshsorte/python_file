@@ -7,6 +7,8 @@ let val;
 function fun() {
     alert("hi follow car")
     // let val="hi follow car"
+    console.log("hiiiiiiiii");
+    
 }
 
 let but=document.getElementById("but")
