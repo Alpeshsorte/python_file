@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Results score panel card wrapper */
+        .results-container {
+            background-color: #1a1a24;
+            border: 2px solid #2d2d3f;
+            border-radius: 16px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Glowing graphic award icon placeholder */
+        .trophy-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        /* Dynamic score header styling */
+        h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        /* Target specifically the dynamic score numbers */
+        h2 span {
+            display: block;
+            font-size: 3.5rem;
+            color: #50fa7b; /* Bright green indicating successful score achievement */
+            text-shadow: 0 0 15px rgba(80, 250, 123, 0.5);
+            margin-top: 10px;
+        }
+
+        /* Styled Action anchor element looking like a premium button */
+        a {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: #bd93f9;
+            color: #0f0f14;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* Try Again button interactives */
+        a:hover {
+            background-color: #a370f7;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(163, 112, 247, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Soft floating animation for visual feedback */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Your Score: {{ score }} / 3</h2>
+
+     <a href="/">Try Again</a>
+     <a href="{% url 'logout' %}">logout</a>
+    
+</body>
+</html>

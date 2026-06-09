@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Base body background to blend with the neon theme */
+body {
+    background-color: #0b0c10;
+    color: #fff;
+}
+
+/* Title header styling */
+h1 {
+    text-align: center;
+    padding: 20px 0 10px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c5a3ff;
+    text-shadow: 0 0 10px rgba(197, 163, 255, 0.6);
+}
+
+/* Navigation layout wrapper */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content left-to-right naturally */
+    background-color: #1a1a24;
+    padding: 12px 40px;
+    border-bottom: 2px solid #2d2d3f;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Brand logo styling */
+nav img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    margin-right: auto; /* Pushes the search bar away from the logo */
+}
+
+/* Search input styling */
+nav input[type="search"] {
+    width: 320px;
+    padding: 10px 18px;
+    background-color: #0f0f14;
+    border: 2px solid #bd93f9;
+    border-radius: 20px 0 0 20px; /* Rounded left corners only to merge with button */
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Search focus glow effect */
+nav input[type="search"]:focus {
+    box-shadow: 0 0 12px rgba(189, 147, 249, 0.4);
+}
+
+/* Search submit button styling */
+nav button[type="submit"] {
+    padding: 10px 22px;
+    background-color: #bd93f9;
+    border: 2px solid #bd93f9;
+    border-radius: 0 20px 20px 0; /* Rounded right corners only */
+    color: #0f0f14;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-right: auto; /* Pushes navigation links to the far right */
+    transition: all 0.3s ease;
+}
+
+/* Search button hover state */
+nav button[type="submit"]:hover {
+    background-color: #a370f7;
+    border-color: #a370f7;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(163, 112, 247, 0.5);
+}
+
+/* General link styling */
+nav a {
+    color: #a9a9b3;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    margin-left: 15px;
+    border-radius: 6px;
+    text-transform: capitalize;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Active navigation link hover effects */
+nav a:hover {
+    color: #ff79c6;
+    background-color: rgba(255, 121, 198, 0.1);
+}
+
+/* Distinct red accent styling specifically for logout button */
+nav a[href*="logout"] {
+    color: #ff5555;
+    border: 1px solid transparent;
+}
+
+nav a[href*="logout"]:hover {
+    color: #fff;
+    background-color: #ff5555;
+    box-shadow: 0 0 10px rgba(255, 85, 85, 0.4);
+}
+
+    </style>
+</head>
+<body>
+    <h1>home page</h1>
+    <nav>
+        <img src="https://img.magnific.com/free-vector/quiz-neon-sign_1262-19629.jpg?semt=ais_hybrid&w=740&q=80" alt="image">
+        <input type="search" value="" name="search" placeholder="search quiz">
+        <button type="submit">submit</button>
+        <a href="{% url 'ragister' %}">ragister</a>
+        <a href="{% url 'login' %}">login</a>
+        <a href="{% url 'logout' %}">logout</a>
+
+    </nav>
+    {% if request.user.is_authenticated %}
+
+    <h1>Welcome {{ request.user.username }}</h1>
+
+    <a href="{% url 'quiz' %}">Take Quiz</a>
+    <a href="{% url 'logout' %}">Logout</a>
+
+    {% else %}
+
+    <h1>Welcome to Quiz App</h1>
+
+    <a href="{% url 'ragister' %}">Register</a>
+    <a href="{% url 'login' %}">Login</a>
+
+    {% endif %}
+<!-- 
+    <div>
+        <form action="" method="POST">
+
+            <h1>Welcome {{ request.user. }}</h1>
+            <h1>take quiz</h1>
+            <a href="{% url 'quiz'%}">take quiz</a>
+
+        </form>
+
+    </div>  -->
+
+    
+</body>
+</html>

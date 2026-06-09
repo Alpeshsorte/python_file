@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Neon header style */
+        h1 {
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a3ff;
+            text-shadow: 0 0 10px rgba(197, 163, 255, 0.6);
+            text-align: center;
+        }
+
+        /* Login form box container */
+        form {
+            background-color: #1a1a24;
+            border: 2px solid #2d2d3f;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Even spacing between inputs */
+        }
+
+        /* Form input fields */
+        form input {
+            width: 100%;
+            padding: 14px 18px;
+            background-color: #0f0f14;
+            border: 2px solid #44475a;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Focus glow when typing */
+        form input:focus {
+            border-color: #bd93f9;
+            box-shadow: 0 0 10px rgba(189, 147, 249, 0.3);
+        }
+
+        /* Login submit button */
+        form button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            background-color: #bd93f9;
+            border: none;
+            border-radius: 8px;
+            color: #0f0f14;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Button hover and glow states */
+        form button[type="submit"]:hover {
+            background-color: #a370f7;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(163, 112, 247, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <h1>login page</h1>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div style="padding:10px;margin:10px;color: red;background:black;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" value="" name="username" placeholder="Enter username name">
+        <input type="password" value="" name="password" placeholder="Enter username password">
+        <button type="submit">submit</button>
+    </form>
+    
+</body>
+</html>

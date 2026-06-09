@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Branding subtitles */
+        h1 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ff79c6;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        /* Main Quiz Header */
+        h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a3ff;
+            text-shadow: 0 0 10px rgba(197, 163, 255, 0.6);
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        /* Quiz card block wrapper */
+        form {
+            background-color: #1a1a24;
+            border: 2px solid #2d2d3f;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Target question text specifically */
+        form p {
+            font-size: 1.15rem;
+            color: #fff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            border-bottom: 1px solid #2d2d3f;
+            padding-bottom: 8px;
+        }
+
+        /* Target the dynamic question counter number */
+        form p strong {
+            color: #bd93f9;
+        }
+
+        /* Option row layout wrapper */
+        .option-container {
+            display: flex;
+            align-items: center;
+            background-color: #0f0f14;
+            border: 1px solid #44475a;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* Option box hover state */
+        .option-container:hover {
+            border-color: #bd93f9;
+            background-color: rgba(189, 147, 249, 0.05);
+        }
+
+        /* Interactive Radio button style override */
+        form input[type="radio"] {
+            accent-color: #bd93f9; /* Changes browser native dots to match app theme */
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        /* Dynamic text label for individual answers */
+        .option-text {
+            font-size: 1rem;
+            color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        /* Quiz submit action button layout */
+        form button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 35px;
+            background-color: #bd93f9;
+            border: none;
+            border-radius: 8px;
+            color: #0f0f14;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Action button hover rules */
+        form button[type="submit"]:hover {
+            background-color: #a370f7;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(163, 112, 247, 0.6);
+        }
+    </style>
+    
+</head>
+<body>
+    <h2>Simple Quiz</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% for q in questions %}
+        <p><strong>{{ forloop.counter }}. {{ q.question }}</strong></p>
+
+        <input type="radio" name="{{ q.id }}" value="{{ q.option1 }}"> {{ q.option1 }} <br>
+        <input type="radio" name="{{ q.id }}" value="{{ q.option2 }}"> {{ q.option2 }} <br>
+        <input type="radio" name="{{ q.id }}" value="{{ q.option3 }}"> {{ q.option3 }} <br><br>
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>
+    
+</body>
+</html>
